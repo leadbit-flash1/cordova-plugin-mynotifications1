@@ -1,0 +1,61 @@
+# Cordova Local Notifications Plugin
+
+A Cordova plugin for scheduling local notifications on Android 8+.
+
+For ones struggling with cordova-local-notifications plugin not working on android and crashing on android 14.
+
+## Installation
+
+cordova plugin add https://github.com/leadbit-flash1/cordova-plugin-mynotifications1.git
+
+Usage
+
+Check Notification Permission
+
+MYNOTIFICATIONS1.hasPermission(function(granted) {
+    if (granted) {
+        console.log("Notification permission granted");
+    } else {
+        console.log("Notification permission not granted");
+    }
+});
+
+Request Notification Permission
+
+MYNOTIFICATIONS1.requestPermission(function(granted) {
+    if (granted) {
+        console.log("Notification permission granted");
+    } else {
+        console.log("Notification permission denied");
+    }
+});
+
+Schedule a Notification
+
+MYNOTIFICATIONS1.schedule({
+    title: "Notification Title",
+    text: "Notification Text",
+    trigger: { in: 5 }, //seconds
+    icon: "res://icon.png",
+    smallIcon: "res://small_icon.png"
+});
+
+Clear All Notifications
+
+MYNOTIFICATIONS1.clearAll(
+    function() {
+        console.log("All notifications cleared");
+    },
+    function(error) {
+        console.error("Failed to clear notifications: " + error);
+    }
+);
+
+Supported Platforms
+Android 8.0+
+
+License
+This project is licensed under the MIT License.
+
+Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.

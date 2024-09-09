@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-mynotifications1"
+        version="1.0.0">
+    <name>MyNotifications1</name>
+    <description>Cordova Local Notifications Plugin</description>
+    <license>MIT</license>
+    <keywords>cordova,notifications,local</keywords>
+
+    <js-module src="www/mynotifications1.js" name="LocalNotificationsPlugin">
+        <clobbers target="MYNOTIFICATIONS1" />
+    </js-module>
+
+    <platform name="android">
+		<framework src="src/android/build/localnotification.gradle" custom="true" type="gradleReference"/>
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="_MYNOTIFICATIONS1">
+                <param name="android-package" value="com.acrobaticgames.mynotifications1.LocalNotificationsPlugin"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/LocalNotificationsPlugin.java" target-dir="src/com/acrobaticgames/mynotifications1" />
+		<source-file src="src/android/NotificationWorker.java" target-dir="src/com/acrobaticgames/mynotifications1" />
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+        </config-file>
+    </platform>
+</plugin>
